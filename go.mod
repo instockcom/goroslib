@@ -1,4 +1,4 @@
-module github.com/aler9/goroslib
+module github.com/instockcom/goroslib
 
 go 1.17
 

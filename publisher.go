@@ -56,9 +56,6 @@ type Publisher struct {
 	subscriberTCPNew chan tcpConnSubscriberReq
 	subscriberClose  chan *publisherSubscriber
 	write            chan interface{}
-
-	// out
-	done chan struct{}
 }
 
 // NewPublisher allocates a Publisher. See PublisherConf for the options.
@@ -113,7 +110,6 @@ func NewPublisher(conf PublisherConf) (*Publisher, error) {
 		subscriberTCPNew: make(chan tcpConnSubscriberReq),
 		subscriberClose:  make(chan *publisherSubscriber),
 		write:            make(chan interface{}),
-		done:             make(chan struct{}),
 	}
 
 	p.conf.Node.Log(LogLevelDebug, "publisher '%s' created",
@@ -139,7 +135,6 @@ func NewPublisher(conf PublisherConf) (*Publisher, error) {
 // Close closes a Publisher and shuts down all its operations.
 func (p *Publisher) Close() error {
 	p.ctxCancel()
-	<-p.done
 
 	p.conf.Node.Log(LogLevelDebug, "publisher '%s' destroyed",
 		p.conf.Node.absoluteTopicName(p.conf.Topic))
@@ -147,8 +142,6 @@ func (p *Publisher) Close() error {
 }
 
 func (p *Publisher) run() {
-	defer close(p.done)
-
 outer:
 	for {
 		select {

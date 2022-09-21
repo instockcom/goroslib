@@ -237,9 +237,6 @@ type Node struct {
 	publisherClose         chan *Publisher
 	serviceProviderNew     chan serviceProviderNewReq
 	serviceProviderClose   chan *ServiceProvider
-
-	// out
-	done chan struct{}
 }
 
 // NewNode allocates a Node. See NodeConf for the options.
@@ -339,7 +336,6 @@ func NewNode(conf NodeConf) (*Node, error) {
 		publisherClose:         make(chan *Publisher),
 		serviceProviderNew:     make(chan serviceProviderNewReq),
 		serviceProviderClose:   make(chan *ServiceProvider),
-		done:                   make(chan struct{}),
 	}
 
 	n.conf.Name = n.applyCliRemapping(n.conf.Name)
@@ -438,7 +434,6 @@ func NewNode(conf NodeConf) (*Node, error) {
 // Close closes a Node and all its resources.
 func (n *Node) Close() error {
 	n.ctxCancel()
-	<-n.done
 	n.Log(LogLevelDebug, "node '%s' destroyed", n.absoluteName())
 	return nil
 }
@@ -549,8 +544,6 @@ func (n *Node) applyCliRemapping(v string) string {
 }
 
 func (n *Node) run() {
-	defer close(n.done)
-
 	var serversWg sync.WaitGroup
 
 	serversWg.Add(3)

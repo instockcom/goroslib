@@ -70,9 +70,6 @@ type Subscriber struct {
 	getBusInfo          chan getBusInfoSubReq
 	subscriberPubUpdate chan []string
 	message             chan interface{}
-
-	// out
-	done chan struct{}
 }
 
 // NewSubscriber allocates a Subscriber. See SubscriberConf for the options.
@@ -161,7 +158,6 @@ func NewSubscriber(conf SubscriberConf) (*Subscriber, error) {
 // Close closes a Subscriber and shuts down all its operations.
 func (s *Subscriber) Close() error {
 	s.ctxCancel()
-	<-s.done
 
 	s.conf.Node.Log(LogLevelDebug, "subscriber '%s' destroyed",
 		s.conf.Node.absoluteTopicName(s.conf.Topic))
@@ -169,8 +165,6 @@ func (s *Subscriber) Close() error {
 }
 
 func (s *Subscriber) run() {
-	defer close(s.done)
-
 	dispatcherDone := make(chan struct{})
 	go func() {
 		defer close(dispatcherDone)
