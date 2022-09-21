@@ -3,8 +3,8 @@ package actionproc
 import (
 	"reflect"
 
-	"github.com/aler9/goroslib/pkg/msgs/actionlib_msgs"
-	"github.com/aler9/goroslib/pkg/msgs/std_msgs"
+	"github.com/instockcom/goroslib/pkg/msgs/actionlib_msgs"
+	"github.com/instockcom/goroslib/pkg/msgs/std_msgs"
 )
 
 // Messages returns the automatically-generated messages of an action.

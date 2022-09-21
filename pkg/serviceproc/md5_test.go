@@ -5,7 +5,7 @@ import (
 
 	"github.com/stretchr/testify/require"
 
-	"github.com/aler9/goroslib/pkg/msg"
+	"github.com/instockcom/goroslib/pkg/msg"
 )
 
 func TestMD5(t *testing.T) {

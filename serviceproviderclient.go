@@ -5,7 +5,7 @@ import (
 	"fmt"
 	"reflect"
 
-	"github.com/aler9/goroslib/pkg/prototcp"
+	"github.com/instockcom/goroslib/pkg/prototcp"
 )
 
 type serviceProviderClient struct {

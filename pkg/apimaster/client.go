@@ -3,7 +3,7 @@ package apimaster
 import (
 	"fmt"
 
-	"github.com/aler9/goroslib/pkg/xmlrpc"
+	"github.com/instockcom/goroslib/pkg/xmlrpc"
 )
 
 // Client is a Master API client.

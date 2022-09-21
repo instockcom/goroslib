@@ -5,8 +5,8 @@ import (
 	"os"
 	"os/signal"
 
-	"github.com/aler9/goroslib"
-	"github.com/aler9/goroslib/pkg/msgs/sensor_msgs"
+	"github.com/instockcom/goroslib"
+	"github.com/instockcom/goroslib/pkg/msgs/sensor_msgs"
 )
 
 func onMessage(msg *sensor_msgs.Imu) {

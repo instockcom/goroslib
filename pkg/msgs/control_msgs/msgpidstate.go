@@ -5,8 +5,8 @@ package control_msgs
 import (
 	"time"
 
-	"github.com/aler9/goroslib/pkg/msg"
-	"github.com/aler9/goroslib/pkg/msgs/std_msgs"
+	"github.com/instockcom/goroslib/pkg/msg"
+	"github.com/instockcom/goroslib/pkg/msgs/std_msgs"
 )
 
 type PidState struct {

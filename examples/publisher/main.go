@@ -6,9 +6,9 @@ import (
 	"os/signal"
 	"time"
 
-	"github.com/aler9/goroslib"
-	"github.com/aler9/goroslib/pkg/msgs/geometry_msgs"
-	"github.com/aler9/goroslib/pkg/msgs/sensor_msgs"
+	"github.com/instockcom/goroslib"
+	"github.com/instockcom/goroslib/pkg/msgs/geometry_msgs"
+	"github.com/instockcom/goroslib/pkg/msgs/sensor_msgs"
 )
 
 func main() {

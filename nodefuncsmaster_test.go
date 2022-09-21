@@ -7,7 +7,7 @@ import (
 
 	"github.com/stretchr/testify/require"
 
-	"github.com/aler9/goroslib/pkg/msgs/std_msgs"
+	"github.com/instockcom/goroslib/pkg/msgs/std_msgs"
 )
 
 func TestNodeMasterGetNodes(t *testing.T) {

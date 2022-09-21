@@ -5,7 +5,7 @@ package sound_play
 import (
 	"time"
 
-	"github.com/aler9/goroslib/pkg/msg"
+	"github.com/instockcom/goroslib/pkg/msg"
 )
 
 type SoundRequestActionGoal struct {

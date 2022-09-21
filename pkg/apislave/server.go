@@ -3,7 +3,7 @@ package apislave
 import (
 	"net"
 
-	"github.com/aler9/goroslib/pkg/xmlrpc"
+	"github.com/instockcom/goroslib/pkg/xmlrpc"
 )
 
 // ErrorRes is the error returned by the server in case of wrong or unhandled

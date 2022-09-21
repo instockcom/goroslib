@@ -3,8 +3,8 @@ package main
 import (
 	"fmt"
 
-	"github.com/aler9/goroslib"
-	"github.com/aler9/goroslib/pkg/msg"
+	"github.com/instockcom/goroslib"
+	"github.com/instockcom/goroslib/pkg/msg"
 )
 
 // define a custom service.

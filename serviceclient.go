@@ -8,9 +8,9 @@ import (
 	"sync"
 	"time"
 
-	"github.com/aler9/goroslib/pkg/protocommon"
-	"github.com/aler9/goroslib/pkg/prototcp"
-	"github.com/aler9/goroslib/pkg/serviceproc"
+	"github.com/instockcom/goroslib/pkg/protocommon"
+	"github.com/instockcom/goroslib/pkg/prototcp"
+	"github.com/instockcom/goroslib/pkg/serviceproc"
 )
 
 // ServiceClientConf is the configuration of a ServiceClient.

@@ -3,8 +3,8 @@ package goroslib
 import (
 	"sync"
 
-	"github.com/aler9/goroslib/pkg/protocommon"
-	"github.com/aler9/goroslib/pkg/prototcp"
+	"github.com/instockcom/goroslib/pkg/protocommon"
+	"github.com/instockcom/goroslib/pkg/prototcp"
 )
 
 func (n *Node) runTcprosServer(wg *sync.WaitGroup) {

@@ -13,7 +13,7 @@ import (
 
 	"gopkg.in/alecthomas/kingpin.v2"
 
-	"github.com/aler9/goroslib/pkg/msgconv"
+	"github.com/instockcom/goroslib/pkg/msgconv"
 )
 
 var tpl = template.Must(template.New("").Parse(

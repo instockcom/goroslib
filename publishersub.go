@@ -6,7 +6,7 @@ import (
 	"net"
 	"time"
 
-	"github.com/aler9/goroslib/pkg/prototcp"
+	"github.com/instockcom/goroslib/pkg/prototcp"
 )
 
 type publisherSubscriber struct {

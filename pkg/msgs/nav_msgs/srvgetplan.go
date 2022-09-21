@@ -3,8 +3,8 @@
 package nav_msgs
 
 import (
-	"github.com/aler9/goroslib/pkg/msg"
-	"github.com/aler9/goroslib/pkg/msgs/geometry_msgs"
+	"github.com/instockcom/goroslib/pkg/msg"
+	"github.com/instockcom/goroslib/pkg/msgs/geometry_msgs"
 )
 
 type GetPlanReq struct {

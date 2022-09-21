@@ -7,9 +7,9 @@ import (
 	"sync"
 	"time"
 
-	"github.com/aler9/goroslib/pkg/actionproc"
-	"github.com/aler9/goroslib/pkg/msgs/actionlib_msgs"
-	"github.com/aler9/goroslib/pkg/msgs/std_msgs"
+	"github.com/instockcom/goroslib/pkg/actionproc"
+	"github.com/instockcom/goroslib/pkg/msgs/actionlib_msgs"
+	"github.com/instockcom/goroslib/pkg/msgs/std_msgs"
 )
 
 // ActionServerGoalState is the state of the goal of an action server.

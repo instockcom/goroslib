@@ -6,7 +6,7 @@ import (
 	"reflect"
 	"sync"
 
-	"github.com/aler9/goroslib/pkg/msgproc"
+	"github.com/instockcom/goroslib/pkg/msgproc"
 )
 
 // Protocol is a ROS stream protocol.
@@ -132,7 +132,6 @@ func NewSubscriber(conf SubscriberConf) (*Subscriber, error) {
 		getBusInfo:          make(chan getBusInfoSubReq),
 		subscriberPubUpdate: make(chan []string),
 		message:             make(chan interface{}, conf.QueueSize),
-		done:                make(chan struct{}),
 	}
 
 	s.conf.Node.Log(LogLevelDebug, "subscriber '%s' created",

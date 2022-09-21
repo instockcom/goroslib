@@ -5,7 +5,7 @@ import (
 
 	"github.com/stretchr/testify/require"
 
-	"github.com/aler9/goroslib/pkg/msgproc"
+	"github.com/instockcom/goroslib/pkg/msgproc"
 )
 
 func TestMessages(t *testing.T) {

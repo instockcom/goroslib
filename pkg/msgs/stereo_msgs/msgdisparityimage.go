@@ -3,9 +3,9 @@
 package stereo_msgs
 
 import (
-	"github.com/aler9/goroslib/pkg/msg"
-	"github.com/aler9/goroslib/pkg/msgs/sensor_msgs"
-	"github.com/aler9/goroslib/pkg/msgs/std_msgs"
+	"github.com/instockcom/goroslib/pkg/msg"
+	"github.com/instockcom/goroslib/pkg/msgs/sensor_msgs"
+	"github.com/instockcom/goroslib/pkg/msgs/std_msgs"
 )
 
 type DisparityImage struct {

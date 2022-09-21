@@ -6,7 +6,7 @@ import (
 	"fmt"
 	"reflect"
 
-	"github.com/aler9/goroslib/pkg/msgproc"
+	"github.com/instockcom/goroslib/pkg/msgproc"
 )
 
 func md5sum(text string) string {
