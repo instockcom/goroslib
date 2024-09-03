@@ -451,7 +451,7 @@ func (n *Node) Log(level LogLevel, format string, args ...interface{}) {
 	now := time.Now()
 
 	if (n.conf.LogDestinations & LogDestinationConsole) != 0 {
-		formatted := msg
+		formatted := fmt.Sprintf("[%.06f]: %s", float64(now.UnixMicro())/1e6, msg)
 
 		switch level {
 		case LogLevelDebug:
@@ -465,8 +465,6 @@ func (n *Node) Log(level LogLevel, format string, args ...interface{}) {
 		case LogLevelFatal:
 			formatted = "[FATAL] " + formatted
 		}
-
-		formatted = now.Format("[2006/01/02 15:04:05]") + " " + formatted
 
 		switch level {
 		case LogLevelDebug:
