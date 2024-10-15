@@ -53,7 +53,7 @@ func (ps *publisherSubscriber) subscriberLabel() string {
 func (ps *publisherSubscriber) run() {
 	defer ps.pub.subscribersWg.Done()
 
-	ps.pub.conf.Node.Log(LogLevelDebug,
+	ps.pub.conf.Node.Log(LogLevelTrace,
 		"publisher '%s' got a new subscriber %s",
 		ps.pub.conf.Node.absoluteTopicName(ps.pub.conf.Topic),
 		ps.subscriberLabel())
@@ -76,7 +76,7 @@ func (ps *publisherSubscriber) run() {
 	case <-ps.pub.ctx.Done():
 	}
 
-	ps.pub.conf.Node.Log(LogLevelDebug,
+	ps.pub.conf.Node.Log(LogLevelTrace,
 		"publisher '%s' doesn't have subscriber %s anymore: %s",
 		ps.pub.conf.Node.absoluteTopicName(ps.pub.conf.Topic),
 		ps.subscriberLabel(),

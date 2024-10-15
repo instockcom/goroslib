@@ -128,7 +128,8 @@ type LogLevel int
 
 // standard log levels (http://wiki.ros.org/roscpp/Overview/Logging)
 const (
-	LogLevelDebug LogLevel = iota + 1
+	LogLevelTrace LogLevel = iota + 1
+	LogLevelDebug
 	LogLevelInfo
 	LogLevelWarn
 	LogLevelError
@@ -454,6 +455,8 @@ func (n *Node) Log(level LogLevel, format string, args ...interface{}) {
 		formatted := fmt.Sprintf("[%.06f]: %s", float64(now.UnixMicro())/1e6, msg)
 
 		switch level {
+		case LogLevelTrace:
+			formatted = "[TRACE] " + formatted
 		case LogLevelDebug:
 			formatted = "[DEBUG] " + formatted
 		case LogLevelInfo:
@@ -467,7 +470,7 @@ func (n *Node) Log(level LogLevel, format string, args ...interface{}) {
 		}
 
 		switch level {
-		case LogLevelDebug:
+		case LogLevelTrace, LogLevelDebug:
 			os.Stderr.WriteString(color.RenderString(color.Gray.Code(), formatted) + "\n")
 
 		case LogLevelInfo:
@@ -481,7 +484,7 @@ func (n *Node) Log(level LogLevel, format string, args ...interface{}) {
 		}
 	}
 
-	if (n.conf.LogDestinations&LogDestinationRosout) != 0 && n.rosoutPublisher != nil {
+	if (n.conf.LogDestinations&LogDestinationRosout) != 0 && n.rosoutPublisher != nil && level != LogLevelTrace {
 		n.rosoutPublisher.Write(&rosgraph_msgs.Log{
 			Header: std_msgs.Header{
 				Stamp: now,

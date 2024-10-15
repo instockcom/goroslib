@@ -9,6 +9,7 @@ import (
 	"net/url"
 	"reflect"
 	"strconv"
+	"strings"
 	"time"
 
 	"github.com/instockcom/goroslib/pkg/apislave"
@@ -91,7 +92,7 @@ func (sp *subscriberPublisher) close() {
 func (sp *subscriberPublisher) run() {
 	defer sp.sub.publishersWg.Done()
 
-	sp.sub.conf.Node.Log(LogLevelDebug, "subscriber '%s' got a new publisher '%s'",
+	sp.sub.conf.Node.Log(LogLevelTrace, "subscriber '%s' got a new publisher '%s'",
 		sp.sub.conf.Node.absoluteTopicName(sp.sub.conf.Topic),
 		sp.address)
 
@@ -103,7 +104,11 @@ outer:
 		}
 
 		if err != io.EOF {
-			sp.sub.conf.Node.Log(LogLevelError,
+			level := LogLevelError
+			if strings.HasSuffix(err.Error(), "connection refused") {
+				level = LogLevelTrace
+			}
+			sp.sub.conf.Node.Log(level,
 				"subscriber '%s' got an error: %s",
 				sp.sub.conf.Node.absoluteTopicName(sp.sub.conf.Topic),
 				err.Error())
@@ -119,13 +124,13 @@ outer:
 
 	sp.ctxCancel()
 
-	sp.sub.conf.Node.Log(LogLevelDebug, "subscriber '%s' doesn't have publisher '%s' anymore",
+	sp.sub.conf.Node.Log(LogLevelTrace, "subscriber '%s' doesn't have publisher '%s' anymore",
 		sp.sub.conf.Node.absoluteTopicName(sp.sub.conf.Topic),
 		sp.address)
 }
 
 func (sp *subscriberPublisher) runInner() error {
-	sp.sub.conf.Node.Log(LogLevelDebug, "subscriber '%s' is connecting to publisher '%s'",
+	sp.sub.conf.Node.Log(LogLevelTrace, "subscriber '%s' is connecting to publisher '%s'",
 		sp.sub.conf.Node.absoluteTopicName(sp.sub.conf.Topic),
 		sp.address)
 
@@ -298,7 +303,7 @@ func (sp *subscriberPublisher) runInnerTCP(proto []interface{}) error {
 		return fmt.Errorf("wrong message checksum")
 	}
 
-	sp.sub.conf.Node.Log(LogLevelDebug, "subscriber '%s' is reading from publisher '%s' with TCP",
+	sp.sub.conf.Node.Log(LogLevelTrace, "subscriber '%s' is reading from publisher '%s' with TCP",
 		sp.sub.conf.Node.absoluteTopicName(sp.sub.conf.Topic),
 		sp.address)
 
@@ -402,7 +407,7 @@ func (sp *subscriberPublisher) runInnerUDP(proto []interface{}) error {
 		close(sp.udpFrame)
 	}()
 
-	sp.sub.conf.Node.Log(LogLevelDebug, "subscriber '%s' is reading from publisher '%s' with UDP",
+	sp.sub.conf.Node.Log(LogLevelTrace, "subscriber '%s' is reading from publisher '%s' with UDP",
 		sp.sub.conf.Node.absoluteTopicName(sp.sub.conf.Topic),
 		sp.address)
 
